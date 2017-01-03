@@ -34,7 +34,8 @@ server.post("/api/messages", connector.listen());
 // var textBot = new builder.TextBot();
 // textBot.begin(session, "test");
 
-luisModelUrl = "https://api.projectoxford.ai/luis/v1/application?id=c67e3140-0e9f-4f95-827b-5b12fe5b2d9a&subscription-key=53ca333f33e246d0bb972e4e541b98c5";// "https://api.projectoxford.ai/luis/v1/application?id=162bf6ee-379b-4ce4-a519-5f5af90086b5&subscription-key=11be6373fca44ded80fbe2afa8597c18";//"https://api.projectoxford.ai/luis/v2.0/apps/c67e3140-0e9f-4f95-827b-5b12fe5b2d9a?subscription-key=53ca333f33e246d0bb972e4e541b98c5";
+luisModelUrl = "https://api.projectoxford.ai/luis/v1/application?id=96dab719-ff6f-4828-a705-8df3318df524&subscription-key=f1f59c644d714c6aaef51c08f1cc8df3";
+// "https://api.projectoxford.ai/luis/v1/application?id=162bf6ee-379b-4ce4-a519-5f5af90086b5&subscription-key=11be6373fca44ded80fbe2afa8597c18";//"https://api.projectoxford.ai/luis/v2.0/apps/c67e3140-0e9f-4f95-827b-5b12fe5b2d9a?subscription-key=53ca333f33e246d0bb972e4e541b98c5";
 recognizer = new builder.LuisRecognizer(luisModelUrl);
 intents = new builder.IntentDialog({recognizers: [recognizer]});
 //=========================================================
