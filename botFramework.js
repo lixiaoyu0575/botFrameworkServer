@@ -56,7 +56,7 @@ intents.matches(/^问药/, [function (session, args, next) {
 intents.matches("问药", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -64,7 +64,7 @@ intents.matches("问药", [
 intents.matches("问疾病", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -72,7 +72,7 @@ intents.matches("问疾病", [
 intents.matches("问症状", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -80,7 +80,7 @@ intents.matches("问症状", [
 intents.matches("问检查", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -88,7 +88,7 @@ intents.matches("问检查", [
 intents.matches("问手术", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -97,7 +97,7 @@ intents.matches("问手术", [
 intents.matches("问部位", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -105,7 +105,7 @@ intents.matches("问部位", [
 intents.matches("问科室", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -113,7 +113,7 @@ intents.matches("问科室", [
 intents.matches("问概述", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -122,7 +122,7 @@ intents.matches("问概述", [
 intents.matches("问价格", [
     function (session, args, next) {
         console.log(args);
-        session.send(requestRawQA(session.message.text));
+        session.send(requestRawQA(session.message.text, session));
         // session.send("识别意图：%s", args.intent);
     }
 ]);
@@ -159,11 +159,11 @@ bot.dialog("/profile", [
     }
 ]);
 
-function requestRawQA(sentence) {
+function requestRawQA(sentence, session) {
     var url = "http://1.85.37.136:9999/qa/rawQA/?q={%22q%22:%22" + sentence + "%22}";
     request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            return body.content;
+            session.send(body.content);
         }
     });
 }
