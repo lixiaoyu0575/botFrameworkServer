@@ -163,6 +163,8 @@ function requestRawQA(sentence, session) {
     var url = "http://1.85.37.136:9999/qa/rawQA/?q={%22q%22:%22" + sentence + "%22}";
     request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
+            console.log(body.content);
+            session.send("发送成功");
             session.send(body.content);
         }
     });
