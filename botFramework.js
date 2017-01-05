@@ -164,7 +164,7 @@ function requestRawQA(sentence, session) {
     request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             // console.log(body.content);
-            session.send(body.content);
+            session.send(JSON.parse(body).content);
         }
     });
 }
